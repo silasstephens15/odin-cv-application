@@ -14,4 +14,28 @@ function BiographicInfo() {
   );
 }
 
-export { BiographicInfo };
+function ExperienceSection() {
+  return (
+    <div class="card">
+      <h3>Enter Experience</h3>
+      <form action="">
+        <label htmlFor="dateStart">Start Date</label>
+        <input type="date" id="dateStart" name="dateStart" />
+        <label htmlFor="dateEnd">End date</label>
+        <input type="date" name="dateEnd" id="dateEnd" />
+        <label htmlFor="jobTitle">Job Title</label>
+        <input type="text" id="jobTitle" name="jobTitle" />
+        <label htmlFor="description">Description</label>
+        <input
+          type="textarea"
+          id="description"
+          name="description"
+          placeholder="Enter description..."
+        />
+        <button>Add Experience</button>
+      </form>
+    </div>
+  );
+}
+
+export { BiographicInfo, ExperienceSection };
