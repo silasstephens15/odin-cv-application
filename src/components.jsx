@@ -1,41 +1,124 @@
+import { useState } from "react";
+
 function BiographicInfo() {
-  return (
-    <>
-      <h2>General Information</h2>
-      <form action="">
-        <label htmlFor="name">Enter full name: </label>
-        <input type="text" name="name" id="name" />
-        <label htmlFor="email">Enter email: </label>
-        <input type="email" name="email" id="email" />
-        <label htmlFor="phone">Enter phone: </label>
-        <input type="tel" name="phone" id="phone" />
-      </form>
-    </>
-  );
+  const [isEditing, setIsEditing] = useState(true);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const changeIsEditing = () => {
+    setIsEditing(!isEditing);
+  };
+  if (isEditing) {
+    return (
+      <>
+        <h2>General Information</h2>
+        <form action="">
+          <label htmlFor="name">Enter full name: </label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <label htmlFor="email">Enter email: </label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <label htmlFor="phone">Enter phone: </label>
+          <input
+            type="tel"
+            name="phone"
+            id="phone"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+          />
+          <button onClick={changeIsEditing}>Add</button>
+        </form>
+      </>
+    );
+  } else {
+    return (
+      <div className="card">
+        <h3>{name}</h3>
+        <address>
+          {phone} <br />
+          {email}
+        </address>
+        <button onClick={changeIsEditing}>Edit</button>
+      </div>
+    );
+  }
 }
 
 function ExperienceSection() {
-  return (
-    <div class="card">
-      <h3>Enter Experience</h3>
-      <form action="">
-        <label htmlFor="dateStart">Start Date</label>
-        <input type="date" id="dateStart" name="dateStart" />
-        <label htmlFor="dateEnd">End date</label>
-        <input type="date" name="dateEnd" id="dateEnd" />
-        <label htmlFor="jobTitle">Job Title</label>
-        <input type="text" id="jobTitle" name="jobTitle" />
-        <label htmlFor="description">Description</label>
-        <input
-          type="textarea"
-          id="description"
-          name="description"
-          placeholder="Enter description..."
-        />
-        <button>Add Experience</button>
-      </form>
-    </div>
-  );
+  const [isEditing, setIsEditing] = useState(true);
+  const [dateStart, setDateStart] = useState("");
+  const [dateEnd, setDateEnd] = useState("");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const changeIsEditing = () => {
+    setIsEditing(!isEditing);
+  };
+  if (isEditing) {
+    return (
+      <div className="card">
+        <h3>Enter Experience</h3>
+        <form action="">
+          <label htmlFor="dateStart">Start Date</label>
+          <input
+            type="date"
+            id="dateStart"
+            name="dateStart"
+            value={dateStart}
+            onChange={(e) => setDateStart(e.target.value)}
+          />
+          <label htmlFor="dateEnd">End date</label>
+          <input
+            type="date"
+            name="dateEnd"
+            id="dateEnd"
+            value={dateEnd}
+            onChange={(e) => setDateEnd(e.target.value)}
+          />
+          <label htmlFor="jobTitle">Job Title</label>
+          <input
+            type="text"
+            id="jobTitle"
+            name="jobTitle"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <label htmlFor="description">Description</label>
+          <input
+            type="textarea"
+            id="description"
+            name="description"
+            placeholder="Enter description..."
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+          <button onClick={changeIsEditing}>Add Experience</button>
+        </form>
+      </div>
+    );
+  } else {
+    return (
+      <div className="card">
+        <h3>{title}</h3>
+        <p>
+          {dateStart} - {dateEnd}
+        </p>
+        <br />
+        <p>{description}</p>
+        <button onClick={changeIsEditing}>Edit</button>
+      </div>
+    );
+  }
 }
 
 export { BiographicInfo, ExperienceSection };
