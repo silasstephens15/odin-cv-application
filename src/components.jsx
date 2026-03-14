@@ -67,7 +67,6 @@ function ExperienceSection() {
   if (isEditing) {
     return (
       <div className="card">
-        <h3>Enter Experience</h3>
         <form action="">
           <label htmlFor="dateStart">Start Date</label>
           <input
@@ -102,7 +101,7 @@ function ExperienceSection() {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
-          <button onClick={changeIsEditing}>Add Experience</button>
+          <button onClick={changeIsEditing}>Add</button>
         </form>
       </div>
     );
@@ -121,4 +120,22 @@ function ExperienceSection() {
   }
 }
 
-export { BiographicInfo, ExperienceSection };
+function JobSection() {
+  const [experiences, setExperiences] = useState([
+    <ExperienceSection key={crypto.randomUUID()} />,
+  ]);
+  const addExperience = () => {
+    setExperiences((prev) => [...prev, crypto.randomUUID()]);
+  };
+  return (
+    <div className="Section">
+      <h2>Work Experience</h2>
+      {experiences.map((item, index) => (
+        <ExperienceSection key={item} index="index" />
+      ))}
+      <button onClick={addExperience}>Add New</button>
+    </div>
+  );
+}
+
+export { BiographicInfo, JobSection };

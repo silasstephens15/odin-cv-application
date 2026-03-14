@@ -1,12 +1,12 @@
 import { useState } from "react";
 import "./styles/App.css";
-import { BiographicInfo, ExperienceSection } from "./components";
+import { BiographicInfo, JobSection } from "./components";
 
 function App() {
   return (
     <>
       <BiographicInfo />
-      <ExperienceSection />
+      <JobSection />
     </>
   );
 }
