@@ -66,7 +66,7 @@ function ExperienceSection() {
   };
   if (isEditing) {
     return (
-      <div className="card">
+      <>
         <form action="">
           <label htmlFor="dateStart">Start Date</label>
           <input
@@ -84,7 +84,7 @@ function ExperienceSection() {
             value={dateEnd}
             onChange={(e) => setDateEnd(e.target.value)}
           />
-          <label htmlFor="jobTitle">Job Title</label>
+          <label htmlFor="jobTitle">Title</label>
           <input
             type="text"
             id="jobTitle"
@@ -103,11 +103,11 @@ function ExperienceSection() {
           />
           <button onClick={changeIsEditing}>Add</button>
         </form>
-      </div>
+      </>
     );
   } else {
     return (
-      <div className="card">
+      <>
         <h3>{title}</h3>
         <p>
           {dateStart} - {dateEnd}
@@ -115,23 +115,31 @@ function ExperienceSection() {
         <br />
         <p>{description}</p>
         <button onClick={changeIsEditing}>Edit</button>
-      </div>
+      </>
     );
   }
 }
 
 function JobSection() {
-  const [experiences, setExperiences] = useState([
-    <ExperienceSection key={crypto.randomUUID()} />,
-  ]);
+  const [experiences, setExperiences] = useState([]);
   const addExperience = () => {
     setExperiences((prev) => [...prev, crypto.randomUUID()]);
+  };
+  const deleteCard = (e) => {
+    setExperiences((prev) => {
+      return prev.filter((item) => item != e.target.getAttribute("data-key"));
+    });
   };
   return (
     <div className="Section">
       <h2>Work Experience</h2>
       {experiences.map((item, index) => (
-        <ExperienceSection key={item} index="index" />
+        <div className="card" key={item}>
+          <ExperienceSection data-key={item} />
+          <button onClick={deleteCard} data-key={item}>
+            Delete
+          </button>
+        </div>
       ))}
       <button onClick={addExperience}>Add New</button>
     </div>
