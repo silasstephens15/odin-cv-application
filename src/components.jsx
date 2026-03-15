@@ -120,8 +120,8 @@ function ExperienceSection() {
   }
 }
 
-function JobSection() {
-  const [experiences, setExperiences] = useState([]);
+function Section({ type }) {
+  const [experiences, setExperiences] = useState([crypto.randomUUID()]);
   const addExperience = () => {
     setExperiences((prev) => [...prev, crypto.randomUUID()]);
   };
@@ -132,7 +132,7 @@ function JobSection() {
   };
   return (
     <div className="Section">
-      <h2>Work Experience</h2>
+      <h2>{type} Experience</h2>
       {experiences.map((item, index) => (
         <div className="card" key={item}>
           <ExperienceSection data-key={item} />
@@ -146,4 +146,4 @@ function JobSection() {
   );
 }
 
-export { BiographicInfo, JobSection };
+export { BiographicInfo, Section };

@@ -1,12 +1,13 @@
 import { useState } from "react";
 import "./styles/App.css";
-import { BiographicInfo, JobSection } from "./components";
+import { BiographicInfo, Section } from "./components";
 
 function App() {
   return (
     <>
       <BiographicInfo />
-      <JobSection />
+      <Section type="Work" />
+      <Section type="Education" />
     </>
   );
 }
