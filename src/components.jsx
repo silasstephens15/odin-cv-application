@@ -10,36 +10,38 @@ function BiographicInfo() {
   };
   if (isEditing) {
     return (
-      <>
+      <div className="section">
         <h2>General Information</h2>
-        <form action="">
-          <label htmlFor="name">Enter full name: </label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <label htmlFor="email">Enter email: </label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <label htmlFor="phone">Enter phone: </label>
-          <input
-            type="tel"
-            name="phone"
-            id="phone"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-          />
-          <button onClick={changeIsEditing}>Add</button>
-        </form>
-      </>
+        <div className="card">
+          <form action="">
+            <label htmlFor="name">Enter full name: </label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <label htmlFor="email">Enter email: </label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <label htmlFor="phone">Enter phone: </label>
+            <input
+              type="tel"
+              name="phone"
+              id="phone"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
+            <button onClick={changeIsEditing}>Add</button>
+          </form>
+        </div>
+      </div>
     );
   } else {
     return (
@@ -68,22 +70,6 @@ function ExperienceSection() {
     return (
       <>
         <form action="">
-          <label htmlFor="dateStart">Start Date</label>
-          <input
-            type="date"
-            id="dateStart"
-            name="dateStart"
-            value={dateStart}
-            onChange={(e) => setDateStart(e.target.value)}
-          />
-          <label htmlFor="dateEnd">End date</label>
-          <input
-            type="date"
-            name="dateEnd"
-            id="dateEnd"
-            value={dateEnd}
-            onChange={(e) => setDateEnd(e.target.value)}
-          />
           <label htmlFor="jobTitle">Title</label>
           <input
             type="text"
@@ -92,12 +78,31 @@ function ExperienceSection() {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
+          <div>
+            <label htmlFor="dateStart">Start Date</label>
+            <input
+              type="date"
+              id="dateStart"
+              name="dateStart"
+              value={dateStart}
+              onChange={(e) => setDateStart(e.target.value)}
+            />
+            <label htmlFor="dateEnd">End date</label>
+            <input
+              type="date"
+              name="dateEnd"
+              id="dateEnd"
+              value={dateEnd}
+              onChange={(e) => setDateEnd(e.target.value)}
+            />
+          </div>
           <label htmlFor="description">Description</label>
-          <input
-            type="textarea"
+          <textarea
             id="description"
             name="description"
             placeholder="Enter description..."
+            rows={3}
+            cols={40}
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
@@ -110,7 +115,7 @@ function ExperienceSection() {
       <>
         <h3>{title}</h3>
         <p>
-          {dateStart} - {dateEnd}
+          {dateStart} to {dateEnd}
         </p>
         <br />
         <p>{description}</p>
@@ -131,7 +136,7 @@ function Section({ type }) {
     });
   };
   return (
-    <div className="Section">
+    <div className="section">
       <h2>{type} Experience</h2>
       {experiences.map((item, index) => (
         <div className="card" key={item}>

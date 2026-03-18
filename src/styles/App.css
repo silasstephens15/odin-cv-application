@@ -1,0 +1,47 @@
+:root {
+  --light-gray: rgb(245, 245, 245);
+}
+
+button {
+  margin: 6px 12px;
+  padding: 6px 16px;
+  background-color: lightgray;
+}
+
+body {
+  padding: 32px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70vw;
+  margin: 16px;
+  padding: 12px;
+  background-color: var(--light-gray);
+  border-radius: 8px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  margin: 8px;
+  padding: 4px;
+}
+
+label {
+  margin: 4px 8px;
+}
